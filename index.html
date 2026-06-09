@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매봉역점 월간 리포트 (4.7~6.7)</title>
+<style>
+  :root{
+    --ink:#1c2230; --sub:#6b7280; --line:#e7e9ee; --bg:#f5f6f9;
+    --brand:#ff6b35; --brand-soft:#fff1ea; --navy:#222b45; --ok:#1f9d6b; --ok-soft:#e6f6ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:840px;margin:0 auto;padding:0 18px 70px}
+  header{background:linear-gradient(135deg,#2b3556,#222b45);color:#fff;border-radius:0 0 26px 26px;padding:44px 34px 36px;box-shadow:0 12px 30px rgba(34,43,69,.18)}
+  .badge-top{display:inline-block;background:rgba(255,107,53,.22);color:#ffb799;font-weight:700;font-size:13px;letter-spacing:.5px;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  header h1{font-size:29px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
+  header .period{font-size:15px;color:#c5cbe0}
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+  .card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px 12px;text-align:center}
+  .card .num{font-size:28px;font-weight:800;color:#fff;line-height:1}
+  .card .num small{font-size:14px;color:#aeb6d0;font-weight:600}
+  .card .lbl{font-size:13px;color:#c5cbe0;margin-top:6px}
+  .card .svc{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;background:rgba(255,107,53,.28);color:#ffc8b1;padding:3px 9px;border-radius:999px}
+
+  section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:16px;box-shadow:0 4px 14px rgba(30,35,60,.04)}
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+  .sec-head .dot{width:9px;height:9px;border-radius:50%;background:var(--brand)}
+  .sec-head h2{font-size:19px;font-weight:800;letter-spacing:-.3px}
+  .sec-head .count{margin-left:auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--brand);padding:5px 13px;border-radius:999px}
+  .note{color:#3a4254;font-size:14px;margin:2px 0 14px}
+  .note b{color:var(--brand)}
+  .pill-ok{display:inline-block;font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-soft);padding:3px 10px;border-radius:999px;margin-left:4px}
+
+  .rank-badges{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+  .rank-badges .rb{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px;color:var(--ok);background:var(--ok-soft);border:1px solid #bfe8d3;padding:7px 13px;border-radius:10px}
+  .rank-badges .rb .one{background:var(--ok);color:#fff;border-radius:6px;font-size:11px;padding:1px 7px}
+
+  table.rank{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
+  table.rank th{background:#f4f6f9;color:#46506a;font-weight:700;text-align:left;padding:9px 12px;border-bottom:2px solid var(--line)}
+  table.rank td{padding:9px 12px;border-bottom:1px solid var(--line)}
+  table.rank td.kw{font-weight:700;color:var(--navy)}
+  table.rank .arrow{color:var(--sub)}
+  table.rank .now{font-weight:800}
+  table.rank .now.first{color:var(--ok)}
+  table.rank .now.up{color:var(--brand)}
+  table.rank tr:last-child td{border-bottom:none}
+
+  ul.links{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:8px}
+  ul.links li{display:flex;align-items:center;gap:10px;background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:13.5px}
+  ul.links li::before{content:"▸";color:var(--brand);font-weight:800}
+  ul.links li a{color:#2b62d9;text-decoration:none;word-break:break-all}
+  ul.links li a:hover{text-decoration:underline}
+
+  .imgrow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+  .imgrow.one{grid-template-columns:1fr;max-width:460px}
+  .imgrow.three{grid-template-columns:repeat(3,1fr)}
+  figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fafbfc}
+  figure img{width:100%;display:block}
+  figcaption{font-size:12.5px;color:var(--sub);padding:8px 12px;border-top:1px solid var(--line);background:#fff}
+  .plan{display:flex;flex-direction:column;gap:10px}
+  .plan .row{display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
+  .plan .row .k{flex:0 0 96px;font-weight:700;color:var(--navy)}
+  .plan .row .v{color:#374151}
+  footer{text-align:center;color:var(--sub);font-size:13px;margin-top:30px}
+  @media(max-width:640px){.summary{grid-template-columns:repeat(2,1fr)}.imgrow,.imgrow.three{grid-template-columns:1fr}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding-bottom:0}
+    section{break-inside:avoid;box-shadow:none}
+    header{break-inside:avoid;border-radius:0}
+    figure,ul.links li,table.rank tr{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="badge-top">YOUNG PLACE · 매봉역점</span>
+  <h1>젊은공간 매봉역점 월간 운영 리포트</h1>
+  <div class="period">2026. 4. 7 ~ 6. 7 &nbsp;|&nbsp; 네이버 플레이스 · 블로그 · 홈페이지 통합</div>
+  <div class="summary">
+    <div class="card"><div class="num">13<small>건</small></div><div class="lbl">방문자리뷰</div><div class="svc">실제 리뷰어 ID</div></div>
+    <div class="card"><div class="num">11<small>건</small></div><div class="lbl">블로그리뷰</div><div class="svc">AI 구조 설계</div></div>
+    <div class="card"><div class="num">4<small>건</small></div><div class="lbl">클립</div><div class="svc">상단 단독 노출</div></div>
+    <div class="card"><div class="num">4<small>건</small></div><div class="lbl">소식</div><div class="svc">동영상 업로드</div></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>플레이스 셋팅 완료</h2><span class="count">키워드 1페이지 · 홈페이지 노출</span></div>
+    <p class="note">플레이스 기본 셋팅을 완료하고, 주요 키워드 <b>1페이지 노출</b> 및 <b>홈페이지 노출</b> 기반을 마련했습니다.</p>
+    <div class="imgrow one">
+      <figure><img src="images/p_setup.png" alt="플레이스 셋팅"><figcaption>플레이스 셋팅 완료 화면</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>키워드 순위 — 매봉역 4종 1등 달성</h2><span class="count">전 키워드 순위 상승</span></div>
+    <p class="note">대표 키워드 <b>매봉역 4종 모두 1위</b>를 달성하고, 강남·도곡 키워드도 꾸준히 순위를 끌어올렸습니다.</p>
+    <div class="rank-badges">
+      <span class="rb"><span class="one">1위</span> 매봉역고시원</span>
+      <span class="rb"><span class="one">1위</span> 매봉역원룸텔</span>
+      <span class="rb"><span class="one">1위</span> 매봉역원룸</span>
+      <span class="rb"><span class="one">1위</span> 매봉역고시텔</span>
+    </div>
+    <div class="imgrow three">
+      <figure><img src="images/kw_mb_gosiwon.png" alt="매봉역고시원 1위"><figcaption>매봉역고시원 — 현재 <b>1위</b></figcaption></figure>
+      <figure><img src="images/kw_mb_roomtel.png" alt="매봉역원룸텔 1위"><figcaption>매봉역원룸텔 — 현재 <b>1위</b></figcaption></figure>
+      <figure><img src="images/kw_gn_gosiwon.png" alt="강남프리미엄고시원 상승"><figcaption>강남프리미엄고시원 — 5위→<b>2위</b> 상승</figcaption></figure>
+    </div>
+    <table class="rank">
+      <thead><tr><th>키워드</th><th>순위 변동</th><th>현재</th></tr></thead>
+      <tbody>
+        <tr><td class="kw">매봉역고시원</td><td>2위 <span class="arrow">→</span> 1위</td><td class="now first">1위</td></tr>
+        <tr><td class="kw">매봉역원룸텔</td><td>2위 <span class="arrow">→</span> 1위</td><td class="now first">1위</td></tr>
+        <tr><td class="kw">매봉역원룸</td><td>2위 <span class="arrow">→</span> 1위</td><td class="now first">1위</td></tr>
+        <tr><td class="kw">매봉역고시텔</td><td>2위 <span class="arrow">→</span> 1위</td><td class="now first">1위</td></tr>
+        <tr><td class="kw">강남프리미엄고시원</td><td>8위 <span class="arrow">→</span> 5위 <span class="arrow">→</span> 2위</td><td class="now up">2위</td></tr>
+        <tr><td class="kw">강남프리미엄원룸텔</td><td>8위 <span class="arrow">→</span> 4위 <span class="arrow">→</span> 3위</td><td class="now up">3위</td></tr>
+        <tr><td class="kw">강남프리미엄고시텔</td><td>6위 <span class="arrow">→</span> 4위</td><td class="now up">4위</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>홈페이지 개설 효과</h2><span class="count">검색 노출 확장</span></div>
+    <p class="note">전용 홈페이지를 개설해 네이버 검색결과에 <b>홈페이지가 추가 노출</b>되며 유입 경로를 넓혔습니다.</p>
+    <ul class="links">
+      <li><a href="https://youngspace2015.github.io/yspace-maebong/" target="_blank">youngspace2015.github.io/yspace-maebong</a></li>
+    </ul>
+    <div class="imgrow one">
+      <figure><img src="images/homepage.png" alt="홈페이지 노출"><figcaption>검색결과 내 홈페이지 노출</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>리뷰 — 방문자 13건 · 블로그 11건</h2><span class="count">키워드 상위노출 견인</span></div>
+    <p class="note">키워드·방문의도에 맞춰 <b>AI가 읽을 수 있는 구조</b>로 리뷰를 설계하고, <b>실제 리뷰어 아이디</b>로 진행했습니다. 블로그 리뷰로 <b>매봉역원룸텔 1위 · 매봉역고시원/원룸텔 가격 1위 · 강남프리미엄 원룸텔·고시텔 상위노출</b>을 견인했습니다.</p>
+    <ul class="links">
+      <li><a href="https://map.naver.com/p/search/강남프리미엄고시원/place/2082991230" target="_blank">강남프리미엄고시원 방문자리뷰 보기 (네이버지도)</a></li>
+    </ul>
+    <div class="imgrow">
+      <figure><img src="images/visit.png" alt="방문자리뷰"><figcaption>방문자리뷰 13건</figcaption></figure>
+      <figure><img src="images/blog.png" alt="블로그리뷰"><figcaption>블로그리뷰 11건</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>클립</h2><span class="count">4건 · 상단 단독 노출</span></div>
+    <p class="note">숏폼 클립 4건을 업로드했습니다. <b>‘매봉역 원룸텔’ 검색 시 클립 영역에 우리 업체만 노출</b>됩니다.</p>
+    <div class="imgrow one">
+      <figure><img src="images/clip.png" alt="클립"><figcaption>클립 4건 업로드</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>소식</h2><span class="count">4건</span></div>
+    <p class="note">동영상으로 소식란 4건을 업로드해 플레이스 활성도를 높였습니다.</p>
+    <div class="imgrow one">
+      <figure><img src="images/news.png" alt="소식"><figcaption>동영상 소식 업로드</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>예약 QR · 바로가기</h2><span class="count">전환 동선 강화</span></div>
+    <p class="note">네이버 예약 <b>QR코드 · 바로가기 링크</b>를 제작해 예약 전환 동선을 강화했습니다. <span class="pill-ok">할인쿠폰 증정</span></p>
+    <ul class="links">
+      <li><a href="https://m.site.naver.com/25UFL" target="_blank">m.site.naver.com/25UFL (예약 바로가기)</a></li>
+    </ul>
+    <div class="imgrow one">
+      <figure><img src="images/qr.png" alt="예약 QR"><figcaption>네이버 예약리뷰 QR (할인쿠폰)</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot" style="background:var(--navy)"></span><h2>다음 달 계획</h2></div>
+    <div class="plan">
+      <div class="row"><div class="k">예약리뷰</div><div class="v">6/9, 6/15, 6/22, 6/29, 7/6</div></div>
+      <div class="row"><div class="k">블로그리뷰</div><div class="v">6/10, 6/17, 6/24, 7/1, 7/8</div></div>
+      <div class="row"><div class="k">기타</div><div class="v">소식 1건 · 클립 1건 · 플레이스 점검</div></div>
+    </div>
+  </section>
+
+  <footer>YOUNG PLACE 매봉역점 · 월간 운영 리포트 (2026. 4. 7 ~ 6. 7)</footer>
+</div>
+</body>
+</html>
